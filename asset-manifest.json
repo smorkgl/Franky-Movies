@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Franky-Movies/static/css/main.af1890ab.css",
-    "main.js": "/Franky-Movies/static/js/main.2e050d5d.js",
+    "main.js": "/Franky-Movies/static/js/main.f894fd07.js",
     "index.html": "/Franky-Movies/index.html",
     "main.af1890ab.css.map": "/Franky-Movies/static/css/main.af1890ab.css.map",
-    "main.2e050d5d.js.map": "/Franky-Movies/static/js/main.2e050d5d.js.map"
+    "main.f894fd07.js.map": "/Franky-Movies/static/js/main.f894fd07.js.map"
   },
   "entrypoints": [
     "static/css/main.af1890ab.css",
-    "static/js/main.2e050d5d.js"
+    "static/js/main.f894fd07.js"
   ]
 }
