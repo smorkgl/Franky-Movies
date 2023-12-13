@@ -1,28 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-class Search extends React.Component {
-  state = {
-    search: '',
-    type: 'all',
-  };
+const Search = (props) => {
+  const {searchMovies} = props;
 
-  handleKey = (event) => {
-    if (this.state.search === null) {
+  const [search, setSearch] = useState(''); 
+  const [type, setType] = useState('all'); 
+
+  const handleKey = (event) => {
+    if (search === null) {
     if (event.key === 'Enter') { 
-      this.props.searchMovies(this.state.search, this.state.type);
+      searchMovies(search, type);
     } 
     }
   };
 
-  handleChangeChecked = (event) => {
-    this.setState(() => ({type: event.target.dataset.type}), () => {this.props.searchMovies(this.state.search, this.state.type)} );
+  const handleChangeChecked = (event) => {
+    setType(event.target.dataset.type)
+    searchMovies(search, event.target.dataset.type);
+
   };
 
-
-
-  
-  render() {
-    const { search} = this.state;
     return (
       <div className="input-field col s12">
         <input
@@ -30,48 +27,48 @@ class Search extends React.Component {
           type="text"
           class="validate"
           value={search}
-          onChange={(e) => this.setState({ search: e.target.value })}
-          onKeyDown={this.handleKey}
+          onChange={(e) => setSearch( e.target.value )}
+          onKeyDown={handleKey}
         />
         <div class="checkbox-list">
           <label>
             <input
-              disabled={this.state.search === ''}
+              disabled={search === ''}
               type="checkbox"
               name="check1" 
               data-type="all"
-              onChange={this.handleChangeChecked}
-              checked={this.state.type === 'all'}
+              onChange={handleChangeChecked}
+              checked={type === 'all'}
             />
             <span>All</span>
           </label>
           <label>
             <input
-              disabled={this.state.search === ''}
+              disabled={search === ''}
               type="checkbox"
               name="check2"
               data-type="movie"
-              onChange={this.handleChangeChecked}
-              checked={this.state.type === 'movie'}
+              onChange={handleChangeChecked}
+              checked={type === 'movie'}
             />
             <span>Movies only</span>
           </label>
           <label>
             <input
-              disabled={this.state.search === ''}
+              disabled={search === ''}
               type="checkbox"
               name="check3"
               data-type="series"
-              onChange={this.handleChangeChecked}
-              checked={this.state.type === 'series'}
+              onChange={handleChangeChecked}
+              checked={type === 'series'}
             />
             <span>Series only</span>
           </label>
         </div>
         <button 
-          disabled={this.state.search === ''}
+          disabled={search === ''}
           class="btn-large waves-effect waves-light"
-          onClick={() => this.props.searchMovies(this.state.search, this.state.type)}
+          onClick={() => searchMovies(search, type)}
         >
           Search
         </button>
@@ -79,6 +76,5 @@ class Search extends React.Component {
       </div>
     );
   }
-}
 
 export { Search };
